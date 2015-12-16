@@ -27,13 +27,17 @@
 		}
 		?>
 	</div>
-	<div style="text-align: center"><h1>Рейтинг клуба BigBen</h1></div>
+	<div style="text-align: center"><h1>BIG BEN OPEN 2015</h1></div>
 	<div id="css-menu-wrapper">
 		<div id="css-menu">
 			<ul>
-				<li><a href="/?action=getRating">
+				<?php /*<li><a href="/?action=getRating">
 					<span class="text-top">Общий рейтинг</span>
 					<span class="text-bottom">Рейтинг игроков</span>
+				</a></li>*/ ?>
+				<li><a href="/?action=getRating">
+					<span class="text-top">Рассадка игроков</span>
+					<span class="text-bottom">Игровые залы</span>
 				</a></li>
 				<li><a href="/?action=getPersonalStat">
 					<span class="text-top">Личный кабинет</span>
