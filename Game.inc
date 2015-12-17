@@ -48,7 +48,9 @@ class Game
 			$this->status = 0;
 		$this->date = $post['date'];
 		$this->gameId = SQL("select max(GameId) as m from Games")->getAll()[0]['m'] + 1;
-		$this->dryVictory = $post['isDry'];
+		if ($post['isDry']==='on')
+			$this->dryVictory = 1;
+		else $this->dryVictory = 0;
 
 		$this->players = array();
 		for ($i = 0; $i < 10; $i++)
