@@ -7,6 +7,7 @@ class Game
 	public $date;
 	public $status;
 	public $players;
+	public $ryVictory;
 	public function __construct($par)
 	{
 		if (is_array($par))
@@ -16,7 +17,7 @@ class Game
 	}
 	public function saveToSql()
 	{
-		SQL("INSERT INTO `Games`(`GameId`, `RoomId`, `Master`, `CityVictory`, `date`) VALUES (?,?,?,?,?)", array($this->gameId,$this->roomId, $this->master, $this->status, $this->date));
+		SQL("INSERT INTO `Games`(`GameId`, `RoomId`, `Master`, `CityVictory`, `date`, `DryVictory`) VALUES (?,?,?,?,?,)", array($this->gameId,$this->roomId, $this->master, $this->status, $this->date, $this->dryVictory));
 		
 		Logger::getInstance()->write("Game with id $this->gameId is added, room is $this->roomId, adder is " . $_SESSION['player']);
 		foreach ($this->players as $playerName => $info)
@@ -26,7 +27,7 @@ class Game
 	}
 	public function update($gameId)
 	{
-		SQL("UPDATE `Games` SET `RoomId`=?,`Master`=?,`CityVictory`=?,`date`=? WHERE GameId=?", array($this->roomId, $this->master, $this->status, $this->date, $gameId));
+		SQL("UPDATE `Games` SET `RoomId`=?,`Master`=?,`CityVictory`=?,`date`=? `DryVictory`=? WHERE GameId=?", array($this->roomId, $this->master, $this->status, $this->date, $this->dryVictory, $gameId));
 		SQL("Delete from PlayerGame where Game=?", array($gameId));
 		foreach ($this->players as $playerName => $info)
 		{	
@@ -47,7 +48,8 @@ class Game
 			$this->status = 0;
 		$this->date = $post['date'];
 		$this->gameId = SQL("select max(GameId) as m from Games")->getAll()[0]['m'] + 1;
-				
+		$this->dryVictory = $post['isDry'];
+
 		$this->players = array();
 		for ($i = 0; $i < 10; $i++)
 		{
