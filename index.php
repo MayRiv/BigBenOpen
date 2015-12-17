@@ -54,6 +54,8 @@
 			System::getInstance()->getDomination();
 		else if ($_GET['action'] == 'getPowerMap')
 			System::getInstance()->getPowerMap();
+		else if ($_GET['action'] == 'getPlacing')
+			System::getInstance()->getPlacing();
 		else 
 			System::getInstance()->getRating();
 	}

@@ -58,6 +58,25 @@ ORDER BY player ASC, b DESC")->getAll();*/
 		else 
 			header("Location: ?action=getRating");
 	}
+	public function getPlacing()
+	{
+		if (!$_SESSION['isAuth'])
+		{
+			$players = SQL("Select Name from Players")->getAll();
+			getView("Auth.inc",$players);
+		}
+		else
+		{
+			$stat = new PersonalStat($_SESSION['player']);
+			if (isset($_POST['name']))
+			{
+				$player = $_POST["name"];
+
+				$stat->compare($player);		
+			}
+			getView("PersonalStatView.inc", $stat);
+		}
+	}
 	public function getPersonalStat()
 	{
 		if (!$_SESSION['isAuth'])
