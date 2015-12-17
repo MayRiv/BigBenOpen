@@ -7,7 +7,7 @@ class Game
 	public $date;
 	public $status;
 	public $players;
-	public $ryVictory;
+	public $dryVictory;
 	public function __construct($par)
 	{
 		if (is_array($par))
