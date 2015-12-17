@@ -12,7 +12,8 @@
 }
 
 	echo "</table><div id='feed>'"
-
+	if ($obj['game']->dryVictory)
+		echo "<p>Сухая победа</p>";
 	echo "<p>Первоубиенный ".$firstBlood['Name']."Попал в ".$firstBlood['BestMove']." черных игроков</p>"
 	echo "<p>Победила команда: ".$obj['game']["Status"]."</p>";
 	echo "<p>Ведущий: ".$obj['game']["MasterName"]."</p>";
