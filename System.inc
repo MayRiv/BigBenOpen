@@ -66,7 +66,7 @@ ORDER BY player ASC, b DESC")->getAll();*/
 		$players = SQL("Select Name from Players")->getAll();
 		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$placement = new Placement($_POST['player']);
+			$placement = new Placement($_POST['Player']);
 		}
 		$obj['players'] = $players;
 		$obj['placement'] = $placement;
