@@ -34,7 +34,7 @@ class Rating
 	{
 		var_dump($game);
 		$result = 0;
-		if ($game['v'])
+		if ($game['v'] === "1")
 		{
 			$result += 1;
 			if ($game['r'] === "Sherif" || $game['r'] === "Don")
