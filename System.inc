@@ -252,7 +252,6 @@ ORDER BY player ASC, b DESC")->getAll();*/
 			if ($_SERVER['REQUEST_METHOD'] == 'POST')
 			{
 				$gameId = (int)$_POST['GameId'];
-				var_dump($_POST);
 				$game = new Game($_POST);
 				var_dump($game);
 				$game->update($gameId);
