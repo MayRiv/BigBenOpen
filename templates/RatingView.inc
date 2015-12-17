@@ -4,7 +4,7 @@
 	echo "<p>Рейтинг игроков за период от $obj->date1 до $obj->date2.</p></div>";
 ?>
 <table class="table_dark">
-		<tr><th>#</th><th>Игрок</th><th>Сыграно игр</th><th>Победы</th><th>Количество лучших</th><th>Рейтинг</th></tr>
+		<tr><th>#</th><th>Игрок</th><th>Победы</th><th>Рейтинг</th></tr>
 <?php
 	{
 		$i = 1;
