@@ -20,11 +20,14 @@ class Rating
 	}
 	private function calculateRating()
 	{
-		
+		var_dump($this->players);
 		foreach ($this->players as $player => $game) {
 			$this->rating[$player]['p'] += Rating::getRating($game);
 			$this->rating[$player]['v'] += $game['v'];
 		}
+
+		echo "---------------------------------------------";
+		var_dump($this->rating);
 	}
 	public static function getRating($game)
 	{
