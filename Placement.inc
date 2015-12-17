@@ -2,7 +2,7 @@
 class Placement
 {
 	public $player;
-	public $table;	
+	public $tables;	
 	function __construct($player)
 	{
 		$this->player = $player;
