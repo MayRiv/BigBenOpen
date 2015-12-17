@@ -32,7 +32,7 @@ class Rating
 	}
 	public static function getRating($game)
 	{
-		var_dump($game["v"]);
+		var_dump($game);
 
 		$result = 0;
 		if ($game['v'] === "1")
