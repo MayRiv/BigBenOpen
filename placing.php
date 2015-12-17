@@ -35,8 +35,9 @@ for ($i=1; $i < 7; $i++) {
 
 
 for ($i=0; $i < 100; $i++) { 
+	$tables = "";
 	foreach ($players[$i]->table as $key => $value) {
-		$tables = "";
+		
 		$tables .= $key . ":" . $value . "-";
 		//$tables[strlen($tables)-1] = '';
 		
