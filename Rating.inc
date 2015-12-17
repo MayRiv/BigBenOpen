@@ -22,6 +22,10 @@ class Rating
 	{
 		var_dump($this->players);
 		foreach ($this->players as $player => $game) {
+			if (!isset($this->rating[$player]))
+			{
+				$this->rating[$player] = array('p'=>0, 'v'=>0);
+			}
 			$this->rating[$player]['p'] += Rating::getRating($game);
 			$this->rating[$player]['v'] += $game['v'];
 		}
