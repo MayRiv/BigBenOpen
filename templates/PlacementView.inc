@@ -5,11 +5,16 @@
   			<p><input type="submit" value="Показать рассадку"></p>
  	</form>
 </div>
-
+<table class="table_dark">
+    <tr><th>Раунд</th><th>Стол</th>
 <?php
   if ($obj['placement'])
-    echo "wasap.";
+    foreach ($obj['placement']->tables as $round=> $table) {
+      # code...
+    }
+    echo "<tr><td>$round</td><td>$table</td></tr>";
 ?>
+</table>
 <script type="text/javascript">
 <?php
 $names = "var availableTags = [";
