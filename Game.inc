@@ -108,6 +108,8 @@ class Game
 			$victoryTeam = "Ничья";
 		if (isset($firstBlood))
 			echo "<p>Первоубиенный ".$firstBlood['Name']." Попал в ".$firstBlood['BestMove']." черных игроков</p>";
+		if ($this->dryVictory)
+			echo "<p>Сухая победа</p>";
 		echo "<p>Победила команда: $victoryTeam</p>";
 		echo "<p>Ведущий: ".$this->master."</p>";
 		echo "<p><a href='?action=showGames&date=".$this->date."'>Назад</a></p>";
