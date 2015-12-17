@@ -70,7 +70,7 @@ class Game
 	private function initByGameId($GameId)
 	{
 		$this->gameId = $GameId;
-		$game = SQL("Select RoomId, Master, date, CityVictory, DryVictory as Status from Games where GameId=?", array($GameId))->getAll();
+		$game = SQL("Select RoomId, Master, date, CityVictory as Status, DryVictory from Games where GameId=?", array($GameId))->getAll();
 		if (count($game) == 1)
 		{
 			$this->roomId = $game[0]['RoomId'];
