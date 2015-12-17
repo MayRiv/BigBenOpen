@@ -4,13 +4,13 @@ class Rating
 	public $players;
 	public $date1;
 	public $date2;
-	public function __construct($date1, $date2)
+	public function __construct()
 	{
 		$this->date1 = $date1;
 		$this->date2 = $date2;
-		$res = SQL("SELECT player, t, b, v, m FROM ( SELECT player, COUNT( * ) t, SUM( BestPlayer ) b, SUM( Won ) v, SUM( BestMove ) * 0.25 m FROM PlayerGame JOIN Games ON ( Game = GameId ) JOIN Players ON (player = Name ) WHERE StatusId !=2 AND StatusId !=0 AND DATE BETWEEN CAST(  ? AS DATE )  AND CAST(  ? AS DATE )  GROUP BY player) s ORDER BY  `s`.`m` DESC", array($date1, $date2))->getAll();
+		$res = SQL("select Won as v, Role as r, DryVictory as d, player, BestMove as b from PlayerGame join Games ON(Game=GameId) group by player")->getAll();
 		foreach ($res as $row) {
-			$this->players[] = array('p'=>$row['player'],'t'=>$row['t'], 'b' => $row['b'], 'v' => $row['v'], 'm'=>$row['m'], 'r'=>0);
+			$this->players['player'][] = array('b' => $row['b'], 'v' => $row['v'], , 'r'=>$row['r'], 'd'=>$row['d'], 'p'=>0);
 		}
 
 		$this->calculateRating();
@@ -20,41 +20,38 @@ class Rating
 	private function calculateRating()
 	{
 		
-		for ($i=0; $i < count($this->players); $i++) { 
-			$s = $this->players[$i];
+		foreach ($this->players as $player => $game) {
+
 
 			
-// count - кол-во сыгранных игр этим игроком 
-// win, lose, best - obvious 
-// power - возведение в степень. 
-
-// bestmove - лучший ход. За 2х bestmove = 0.5, за 3х bestmove = 0.75; За 1го bestmove = 0 
 
 
-			$this->players[$i]['r'] = Rating::getRating($s);
+			$game['p'] += Rating::getRating($game);
 		}
 	}
-	public static function getRating($s)
+	public static function getRating($game)
 	{
-		static $constForSign = 20;
-		static $constKoefWin = 1.6;
-
-		$bestResult = ($s['b']+$s['m']);
-		$lose = $s['t'] - $s['v']; 
-		$koefWinStreak = $s['v']-$lose+$bestResult*0.5; 
-		$winStreak = ($koefWinStreak)*pow(($koefWinStreak/$s['t']), 2); 
-		$result = $s['v']*$constKoefWin-$lose+$bestResult+$winStreak; 
-		$result += $constForSign;
-		$result = sqrt(abs($result));
-		return $result;
+		$result = 0;
+		if ($game['v'])
+		{
+			$result += 1;
+			if ($game['r'] === "Sherif" || $game['r'] === "Don")
+				$result +=0.25;
+			if ($game['d'])
+				$result +=0.25;
+		}
+		if ($game['b'] == 2)
+			$result += 0.25;
+		if ($game['b'] == 3)
+			$result += 0.5;
 	}
 	
 }
 function cmp($a, $b)
 	{
-	    if ($a['r'] == $b['r']) {
+	    if ($a['p'] == $b['p']) {
 	        return 0;
 	    }
-	    return ($a['r'] < $b['r']) ? 1 : -1;
+	    return ($a['p'] < $b['p']) ? 1 : -1;
 	}
 ?>
