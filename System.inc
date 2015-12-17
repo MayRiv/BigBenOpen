@@ -50,7 +50,7 @@ GROUP BY player
 ) s
 ORDER BY player ASC, b DESC")->getAll();*/
 		$r = new Rating();
-		//getView("RatingView.inc", $r);
+		getView("RatingView.inc", $r);
 	}
 	public function showAdminPanel()
 	{
