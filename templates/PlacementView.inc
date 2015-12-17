@@ -8,6 +8,7 @@
 <table class="table_dark">
     <tr><th>Раунд</th><th>Стол</th>
 <?php
+  var_dump($obj['placement']);
   if ($obj['placement'])
     foreach ($obj['placement']->tables as $round=> $table) {
        echo "<tr><td>$round</td><td>$table</td></tr>";
