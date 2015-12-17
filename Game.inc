@@ -27,7 +27,7 @@ class Game
 	}
 	public function update($gameId)
 	{
-		DSQL("UPDATE `Games` SET `RoomId`=?,`Master`=?,`CityVictory`=?,`date`=?, `DryVictory`=? WHERE GameId=?", array($this->roomId, $this->master, $this->status, $this->date, $this->dryVictory, $gameId));
+		SQL("UPDATE `Games` SET `RoomId`=?,`Master`=?,`CityVictory`=?,`date`=?, `DryVictory`=? WHERE GameId=?", array($this->roomId, $this->master, $this->status, $this->date, $this->dryVictory, $gameId));
 		SQL("Delete from PlayerGame where Game=?", array($gameId));
 		foreach ($this->players as $playerName => $info)
 		{	
