@@ -6,7 +6,7 @@ class Placement
 	function __construct($player)
 	{
 		$this->player = $player;
-		$res = DSQL("Select Tables from Player where Name = ?", array($player));//->getAll();
+		$res = DSQL("Select Tables from Players where Name = ?", array($player));//->getAll();
 		$this->tables = explode("-", $res[0]["Tables"]);
 	}
 }
