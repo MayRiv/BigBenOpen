@@ -87,6 +87,7 @@
 				echo "<option value='$team'>$message</option>";
 		}
 		?>
+		</select>
 		<p>Сухая победа: <input type="checkbox" name="isDry"/></p>
 		<p><input type='button' value='Update' onclick='bbr.trySend()'/></p>
 	</form>
