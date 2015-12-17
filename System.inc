@@ -253,7 +253,6 @@ ORDER BY player ASC, b DESC")->getAll();*/
 			{
 				$gameId = (int)$_POST['GameId'];
 				$game = new Game($_POST);
-				var_dump($game);
 				$game->update($gameId);
 				//header("Location: ?action=showGame&GameId=$gameId");
 			}
