@@ -20,7 +20,6 @@ class Rating
 	}
 	private function calculateRating()
 	{
-		var_dump($this->players);
 		foreach ($this->players as $player => $game) {
 			if (!isset($this->rating[$player]))
 			{
@@ -30,11 +29,10 @@ class Rating
 			$this->rating[$player]['v'] += $game['v'];
 		}
 
-		echo "---------------------------------------------";
-		var_dump($this->rating);
 	}
 	public static function getRating($game)
 	{
+		var_dump($game);
 		$result = 0;
 		if ($game['v'])
 		{
@@ -48,7 +46,9 @@ class Rating
 			$result += 0.25;
 		if ($game['b'] == 3)
 			$result += 0.5;
+		echo $result;
 		return $result;
+
 	}
 	
 }
