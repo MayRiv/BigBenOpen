@@ -5,6 +5,7 @@ require("GlobalStat.inc");
 require("PowerMap.inc");
 require ("Domination.inc");
 require("Rating.inc");
+require('Placement.inc');
 require_once("Logger.inc");
 class System 
 {
@@ -60,22 +61,16 @@ ORDER BY player ASC, b DESC")->getAll();*/
 	}
 	public function getPlacing()
 	{
-		if (!$_SESSION['isAuth'])
+		$player = "";
+		$obj = null;
+		$players = SQL("Select Name from Players")->getAll();
+		if ($_SERVER['REQUEST_METHOD'] == 'POST')
 		{
-			$players = SQL("Select Name from Players")->getAll();
-			getView("Auth.inc",$players);
+			$placement = new Placement($_POST['player']);
 		}
-		else
-		{
-			$stat = new PersonalStat($_SESSION['player']);
-			if (isset($_POST['name']))
-			{
-				$player = $_POST["name"];
-
-				$stat->compare($player);		
-			}
-			getView("PersonalStatView.inc", $stat);
-		}
+		$obj['players'] = $players;
+		$obj['placement'] = $placement;
+		getView("PlacementView.inc", $obj);
 	}
 	public function getPersonalStat()
 	{
