@@ -17,7 +17,7 @@ class Game
 	}
 	public function saveToSql()
 	{
-		SQL("INSERT INTO `Games`(`GameId`, `RoomId`, `Master`, `CityVictory`, `date`, `DryVictory`) VALUES (?,?,?,?,?,)", array($this->gameId,$this->roomId, $this->master, $this->status, $this->date, $this->dryVictory));
+		SQL("INSERT INTO `Games`(`GameId`, `RoomId`, `Master`, `CityVictory`, `date`, `DryVictory`) VALUES (?,?,?,?,?,?)", array($this->gameId,$this->roomId, $this->master, $this->status, $this->date, $this->dryVictory));
 		
 		Logger::getInstance()->write("Game with id $this->gameId is added, room is $this->roomId, adder is " . $_SESSION['player']);
 		foreach ($this->players as $playerName => $info)

@@ -163,7 +163,8 @@ ORDER BY player ASC, b DESC")->getAll();*/
 			{
 				$game = new Game($_POST);
 				$game->saveToSql();
-				header("Location: ?action=showAdminPanel");
+				var_dump($game);
+				//header("Location: ?action=showAdminPanel");
 			}
 		}
 	}
