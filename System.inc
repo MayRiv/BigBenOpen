@@ -70,7 +70,7 @@ ORDER BY player ASC, b DESC")->getAll();*/
 		}
 		$obj['players'] = $players;
 		$obj['placement'] = $placement;
-		getView("PlacementView.inc", $obj);
+		//getView("PlacementView.inc", $obj);
 	}
 	public function getPersonalStat()
 	{
