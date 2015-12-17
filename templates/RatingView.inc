@@ -12,9 +12,9 @@
 		foreach ($obj->rating as $player=>$stat) 
 			{
 			
-				//echo "<tr><td>$i</th><td>".$stat['stat']."</td><td>".(int)(1000 * $stat['r'])."</td><td>".$stat['t']."</td><td>";
-				echo "<tr><td>$i</th><td>".$player".</td><td>."$stat['v']."</td><td>".$stat['p']."</td>";
+				echo "<tr><td>$i</th><td>".$player."</td><td>".$stat['v']."</td><td>".$stat['p']."</td>";
 				echo "</tr>";
+				$i++;
 			}
 	}
 ?>
