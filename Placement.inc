@@ -1,5 +1,5 @@
 <?php
-class Player 
+class Placement
 {
 	public $player;
 	public $table;	
