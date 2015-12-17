@@ -51,7 +51,7 @@
 				<option value="Draw">Ничья</option>
 			</select>
 			</div>
-			<input type="checkbox" value="Сухая" name="Dry"/>
+			<p>Сухая победа: <input type="checkbox" value="Сухая" name="isDry"/></p>
 		<p><input type="button" value="Send" onclick="bbr.trySend()"/></p>
 	</form>
 
