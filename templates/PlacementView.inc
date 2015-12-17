@@ -10,9 +10,9 @@
 <?php
   if ($obj['placement'])
     foreach ($obj['placement']->tables as $round=> $table) {
-      # code...
+       echo "<tr><td>$round</td><td>$table</td></tr>";
     }
-    echo "<tr><td>$round</td><td>$table</td></tr>";
+   
 ?>
 </table>
 <script type="text/javascript">
