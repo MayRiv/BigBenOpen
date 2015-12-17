@@ -13,7 +13,7 @@ class Rating
 		foreach ($res as $row) {
 			$this->players['player'][] = array('b' => $row['b'], 'v' => $row['v'], 'r'=>$row['r'], 'd'=>$row['d'], 'p'=>0);
 		}
-
+		$this->rating = array();
 		$this->calculateRating();
 		//if (($_SESSION['isAuth'] && ($_SESSION['status'] === "Master" || $_SESSION['status'] === "Admin")))
 			usort($this->players, "cmp");
