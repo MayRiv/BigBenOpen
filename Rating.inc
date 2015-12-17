@@ -2,6 +2,7 @@
 class Rating
 {
 	public $players;
+	public $rating;
 	public $date1;
 	public $date2;
 	public function __construct()
@@ -21,12 +22,8 @@ class Rating
 	{
 		
 		foreach ($this->players as $player => $game) {
-
-
-			
-
-
-			$game['p'] += Rating::getRating($game);
+			$this->rating[$player]['p'] += Rating::getRating($game);
+			$this->rating[$player]['v'] += $game['v'];
 		}
 	}
 	public static function getRating($game)
