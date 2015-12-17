@@ -11,7 +11,7 @@ class Rating
 		$this->date2 = $date2;
 		$res = SQL("select Won as v, Role as r, DryVictory as d, player, BestMove as b from PlayerGame join Games ON(Game=GameId) group by player")->getAll();
 		foreach ($res as $row) {
-			$this->players[$row['player']][] = array('b' => $row['b'], 'v' => $row['v'], 'r'=>$row['r'], 'd'=>$row['d'], 'p'=>0);
+			$this->players[$row['player']][] = array('b' => $row['b'], 'v' => $row['v'], 'r'=>$row['r'], 'd'=>$row['d']);
 		}
 		$this->rating = array();
 		$this->calculateRating();
@@ -48,6 +48,7 @@ class Rating
 			$result += 0.25;
 		if ($game['b'] == 3)
 			$result += 0.5;
+		return $result;
 	}
 	
 }
