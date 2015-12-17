@@ -35,7 +35,7 @@
 					<span class="text-top">Общий рейтинг</span>
 					<span class="text-bottom">Рейтинг игроков</span>
 				</a></li>*/ ?>
-				<li><a href="/?action=getRating">
+				<li><a href="/?action=getPlacing">
 					<span class="text-top">Рассадка игроков</span>
 					<span class="text-bottom">Игровые залы</span>
 				</a></li>
