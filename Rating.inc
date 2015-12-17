@@ -28,7 +28,7 @@ class Rating
 			foreach ($games as $game) {
 				$this->rating[$player]['p'] += Rating::getRating($game);
 				$this->rating[$player]['v'] += $game['v'];
-				echo $this->rating[$player]['p'] ;
+				echo $player.":".$this->rating[$player]['p'] ;
 		
 			}
 		}
