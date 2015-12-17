@@ -39,7 +39,8 @@ for ($i=0; $i < 100; $i++) {
 		$tables = "";
 		$tables += $key . ":" . $value . "-";
 		$tables[strlen($tables)-1] = '';
-		DSQL("UPDATE Players SET Tables = ? where id = ?", array($tables, $players[$i]->id));
+		
 	}
+	DSQL("UPDATE Players SET Tables = ? where id = ?", array($tables, $players[$i]->id));
 }
 ?>
