@@ -20,13 +20,16 @@ class Rating
 	}
 	private function calculateRating()
 	{
-		foreach ($this->players as $player => $game) {
+		foreach ($this->players as $player => $games) {
 			if (!isset($this->rating[$player]))
 			{
 				$this->rating[$player] = array('p'=>0, 'v'=>0);
 			}
-			$this->rating[$player]['p'] += Rating::getRating($game);
-			$this->rating[$player]['v'] += $game['v'];
+			foreach ($games as $game) {
+				$this->rating[$player]['p'] += Rating::getRating($game);
+				$this->rating[$player]['v'] += $game['v'];
+		
+			}
 		}
 
 	}
