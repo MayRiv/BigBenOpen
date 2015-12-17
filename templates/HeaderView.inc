@@ -31,10 +31,12 @@
 	<div id="css-menu-wrapper">
 		<div id="css-menu">
 			<ul>
-				<?php /*<li><a href="/?action=getRating">
-					<span class="text-top">Общий рейтинг</span>
-					<span class="text-bottom">Рейтинг игроков</span>
-				</a></li>*/ ?>
+				<?php 
+					if ($_SESSION['isAuth'] && ($_SESSION['status'] === "Master" || $_SESSION['status'] === "Admin"))
+				echo"<li><a href='/?action=getRating'>
+					<span class='text-top'>Общий рейтинг</span>
+					<span class='text-bottom'>Рейтинг игроков</span>
+				</a></li>"; ?>
 				<li><a href="/?action=getPlacing">
 					<span class="text-top">Рассадка игроков</span>
 					<span class="text-bottom">Игровые залы</span>
