@@ -32,10 +32,10 @@ class Rating
 	}
 	public static function getRating($game)
 	{
-		echo $game["v"];
+		var_dump($game["v"]);
 
 		$result = 0;
-		if ($game["v"] === "1")
+		if ($game['v'] === "1")
 		{
 			echo "true";
 			$result += 1;
