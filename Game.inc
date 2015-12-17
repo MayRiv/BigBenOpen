@@ -70,14 +70,15 @@ class Game
 	private function initByGameId($GameId)
 	{
 		$this->gameId = $GameId;
-		$game = SQL("Select RoomId, Master, date, CityVictory as Status from Games where GameId=?", array($GameId))->getAll();
+		$game = SQL("Select RoomId, Master, date, CityVictory, DryVictory as Status from Games where GameId=?", array($GameId))->getAll();
 		if (count($game) == 1)
 		{
 			$this->roomId = $game[0]['RoomId'];
 			$this->date = $game[0]['date'];
 			$this->master = $game[0]['Master'];
 			$this->status = $game[0]['Status'];
-		
+			$this->dryVictory = $game[0]['DryVictory'];
+
 			$res = SQL("Select `Player`, `Game`, `Role`, `BestPlayer`, `Warnings`, `WasShotFirst`, `BestMove`, `Won`, `Place` from `PlayerGame` WHERE Game = ? order by Place ASC", array($GameId))->getAll();
 			foreach($res as $p)
 			{
