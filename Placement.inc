@@ -7,7 +7,7 @@ class Placement
 	{
 		$this->player = $player;
 		$res = SQL("Select Tables from Player where Name = ?", array($player))->getAll();
-		$this->tables = $res[0]["Tables"];
+		$this->tables = explode("-", $res[0]["Tables"]);
 	}
 }
 ?>
