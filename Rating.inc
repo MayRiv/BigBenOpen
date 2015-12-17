@@ -49,7 +49,6 @@ class Rating
 			$result += 0.25;
 		if ($game['b'] == 3)
 			$result += 0.5;
-		echo $result;
 		return $result;
 
 	}
