@@ -31,7 +31,7 @@ class Table
 		if (!in_array($player, $this->rounds[$round]))
 			$this->rounds[$round][] = $player; 
 	}
-	public checkTable()
+	public function checkTable()
 	{
 		for ($i = 0; $i < 7; $i++)
 		{
