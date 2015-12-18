@@ -70,7 +70,7 @@ for ($i = 0; $i < 100; $i++)
 $result = true;
 for ($i = 0; $i < 10; $i++)
 {
-	if (!$tables[$i]->check())
+	if (!$tables[$i]->checkTable())
 		$result = false;
 }
 if ($result)
