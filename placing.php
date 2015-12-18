@@ -28,7 +28,7 @@ class Table
 	}
 	public function setPlayer($round, $player)
 	{
-		if (!in_array($player, $this->rounds[$round]))
+		if (!isset($this->rounds[$round]) || !in_array($player, $this->rounds[$round]))
 			$this->rounds[$round][] = $player; 
 	}
 	public function checkTable()
