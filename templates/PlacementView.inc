@@ -10,7 +10,15 @@
 <?php
   if ($obj['placement'])
     foreach ($obj['placement']->tables as $round=> $table) {
-       echo "<tr><td>".($round+1)."</td><td>".($table+1)."</td></tr>";
+	$table++;	
+	if ($table > 5)
+	{
+		$table -=5;
+		$table = $table . " (2 смена)";
+	}
+	else
+		$table = $table . " (1 смена)";
+	echo "<tr><td>".($round+1)."</td><td>$table</td></tr>";
     }
    
 ?>
