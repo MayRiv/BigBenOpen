@@ -14,8 +14,8 @@
 	else
 	{
 		$host = "mysql.hostinger.com.ua";
-		$dbName = "u907137641_open";
-		$user = "u907137641_open";
+		$dbName = "u825515718_open";
+		$user = "u825515718_open";
 		$password = "konoplya_1";
 	}	
 	DBManager::getInstance()->connect($host, $dbName, $user, $password);
